@@ -1,18 +1,19 @@
-const controle = document.querySelectorAll(".controle-ajuste")
-const braco = document.querySelector("#braco")
+const controle = document.querySelectorAll("[data-controle]")
 
 controle.forEach( (Element) => {
     Element.addEventListener("click", (evento) => {
-        modificacao(evento.target.textContent)
+        modificacao(evento.target.textContent, evento.target.parentNode)
     })
 })
 
-function modificacao(escolha) {
+function modificacao(escolha, controle) {
+
+    const peca = controle.querySelector("[data-contador]")
 
     if(escolha == "+") {
-        braco.value = parseInt(braco.value) + 1
+        peca.value = parseInt(peca.value) + 1
     } else if (escolha == "-") {
-        braco.value = parseInt(braco.value) - 1
+        peca.value = parseInt(peca.value) - 1
     } else {
         console.log("ERRO")
     }
